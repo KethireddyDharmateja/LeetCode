@@ -36,3 +36,19 @@ public class Solution {
  * Solution obj = new Solution(head);
  * int param_1 = obj.GetRandom();
  */
+
+
+    List<int> li=new List<int>();
+    Random r=new Random();
+    public Solution(ListNode head) {
+        
+        while(head!=null)
+        {
+            li.Add(head.val);
+            head=head.next;
+        }
+    }
+    
+    public int GetRandom() {
+        return li[r.Next(li.Count)];
+    }
