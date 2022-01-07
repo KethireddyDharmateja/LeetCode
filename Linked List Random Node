@@ -37,7 +37,7 @@ public class Solution {
  * int param_1 = obj.GetRandom();
  */
 
-
+=================================================
     List<int> li=new List<int>();
     Random r=new Random();
     public Solution(ListNode head) {
@@ -52,3 +52,53 @@ public class Solution {
     public int GetRandom() {
         return li[r.Next(li.Count)];
     }
+
+=============================
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+public class Solution {
+    private ListNode _head;
+    private ListNode _next;
+    private static readonly Random _randomNumber = new Random();
+
+    public Solution(ListNode head) {
+        _head = head;
+        _next = head;
+    }
+    public int Length() {
+
+		ListNode temp = _head;
+		int count = 0;
+		while (temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
+	}
+    
+    public int GetRandom() {
+        var steps = _randomNumber.Next(Length());
+        while(steps-- > 0){
+            _next = _next.next;
+            if(_next == null){
+                _next = _head;
+            }
+        }
+        return _next.val;
+    }
+}
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(head);
+ * int param_1 = obj.GetRandom();
+ */
