@@ -1,0 +1,20 @@
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+    if(nums.Length ==null || nums.Length == 0){
+        return 0;
+    }
+        int duplicates = 0;
+        int previous = int.MinValue;
+        int id = 0;
+        foreach(int number in nums){
+            if(previous == number){
+                duplicates++;
+            }
+            
+            nums[id - duplicates] = number;
+            previous = number;
+            id++;
+        }
+        return nums.Length - duplicates;
+    }
+}
