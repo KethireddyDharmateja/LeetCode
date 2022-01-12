@@ -1,0 +1,32 @@
+public class Solution {
+    public int MyAtoi(string s) {
+        long result = 0;
+        int sign = 1;
+        int index = 0;
+        s = s.Trim();
+        if (string.IsNullOrEmpty(s)) return 0;
+        
+        if(s[0] == '+' || s[0] == '-'){
+            sign = s[0] =='+' ? 1 : -1;
+                index++;
+        }
+
+        
+        while(index < s.Length){
+            if(char.IsNumber(s[index])){
+                result = result * 10 + s[index] - '0';
+                if(result * sign > int.MaxValue){
+                    return int.MaxValue;
+                }
+                if(result * sign < int.MinValue){
+                    return int.MinValue;
+                }
+            }
+            else{
+                break;
+            }
+            index++;
+        }
+        return (int)result * sign;
+    }
+}
