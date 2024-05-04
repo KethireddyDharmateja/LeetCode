@@ -1,0 +1,19 @@
+def min_adjacent_swaps_to_sort_binary(arr):
+    n = len(arr)
+
+    # Initialize swaps counter
+    swaps = 0
+    ones_encountered = 0
+
+    for num in arr:
+        if num == 1:
+            ones_encountered += 1
+        else:
+            swaps += ones_encountered
+    
+    return swaps
+
+# Example usage
+binary_array = [1, 0, 1, 0, 1, 1, 0, 0]
+swaps_required = min_adjacent_swaps_to_sort_binary(binary_array)
+print(f"Minimum adjacent swaps required to sort the binary array: {swaps_required}")
